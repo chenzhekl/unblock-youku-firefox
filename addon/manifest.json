@@ -4,6 +4,7 @@
     "description": "Port of the popular chrome extension Unblock-Youku",
     "version": "0.1",
     "author": "Zhe Chen",
+    "homepage_url": "https://github.com/chenzhekl/unblock-youku-firefox",
 
     "icons": {
         "16": "icons/icon16.png",
