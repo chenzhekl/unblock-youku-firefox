@@ -516,7 +516,7 @@ function urls2pac (url_whitelist, url_list,
     _proxy_str += proxy_protocol_2 + ' ' + proxy_server_2 + '; '
   }
 
-  _proxy_str += 'DIRECT;'
+  _proxy_str += 'DIRECT'
 
   var _http_map = gen_url_map('http', url_whitelist, url_list)
   var _https_map = gen_url_map('https', url_whitelist, url_list)

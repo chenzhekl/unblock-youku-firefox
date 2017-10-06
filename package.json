@@ -9,7 +9,9 @@
         "webpack": "^3.6.0"
     },
     "standard": {
-        "globals": [ "browser" ],
+        "globals": [
+            "browser"
+        ],
         "ignore": [
             "./common/do_not_want_to_maintain.js",
             "./addon/"
