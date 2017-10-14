@@ -3,18 +3,23 @@
     text-align: center;
 }
 
-.button {
+.btn-group {
+    text-align: center;
+}
+
+.btn {
     width: 60px;
     height: 30px;
     border: none;
     margin: 10px;
+    background-color: #eeeeee;
 }
 
-.button:hover {
-    background-color: powderblue;
+.btn:hover {
+    background-color: #B0E0E6;
     cursor: pointer;
 }
 
 .active {
-    background-color: lightcoral;
+    background-color: #F08080;
 }
