@@ -28,5 +28,11 @@
         "webRequestBlocking",
         "http://*/*",
         "https://*/*"
-    ]
+    ],
+
+    "applications": {
+        "gecko": {
+            "id": "chenzhekl@gmail.com"
+        }
+    }
 }
