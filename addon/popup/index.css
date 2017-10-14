@@ -1,3 +1,7 @@
+body {
+    background-color: #ffffff;
+}
+
 .label {
     padding: 10px;
     text-align: center;
@@ -13,6 +17,7 @@
     border: none;
     margin: 10px;
     background-color: #eeeeee;
+    color: #000000;
 }
 
 .btn:hover {
