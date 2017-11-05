@@ -3,6 +3,8 @@ unblock-youku-firefox
 
 This is the port of the popular chrome extension [Unblock-Youku](https://github.com/uku/Unblock-Youku).
 
+Currently in sync with Unblock Youku chrome v3.6.12.
+
 Install
 -------
 
