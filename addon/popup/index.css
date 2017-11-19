@@ -1,10 +1,14 @@
 body {
     background-color: #ffffff;
+    margin: 0;
+    max-width: 250px;
 }
 
 .label {
     padding: 10px;
     text-align: center;
+    background-color: #f06a27;
+    color: #f5f5f5;
 }
 
 .btn-group {
@@ -26,5 +30,31 @@ body {
 }
 
 .active {
-    background-color: #F08080;
+    background-color: rgba(240, 106, 39, 0.53);
+}
+
+.list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: small;
+}
+
+.li-title {
+    text-align: center;
+    background-color: rgba(230, 230, 230, 0.63);
+    padding: 7px;
+}
+
+.li-content {
+    padding: 10px 30px;
+    background-color: #f8f8f8;
+}
+
+.footer {
+    background-color: #f06a27;
+    text-align: center;
+    font-size: x-small;
+    padding: 5px;
+    color: #f5f5f5;
 }

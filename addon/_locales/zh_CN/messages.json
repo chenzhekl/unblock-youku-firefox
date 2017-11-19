@@ -1,0 +1,23 @@
+{
+  "choose-mode": {
+    "message": "请选择模式"
+  },
+  "off": {
+    "message": "关闭"
+  },
+  "lite": {
+    "message": "精简"
+  },
+  "full": {
+    "message": "全开"
+  },
+  "off-exp": {
+    "message": "插件完全关闭。"
+  },
+  "lite-exp": {
+    "message": "通过修改请求头绕过部分网站的限制。"
+  },
+  "full-exp": {
+    "message": "修改请求头并将部分请求通过代理服务器转发。对大多数用户推荐此模式。"
+  }
+}

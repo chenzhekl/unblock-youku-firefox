@@ -1,0 +1,23 @@
+{
+  "choose-mode": {
+    "message": "請選擇模式"
+  },
+  "off": {
+    "message": "關閉"
+  },
+  "lite": {
+    "message": "精簡"
+  },
+  "full": {
+    "message": "全開"
+  },
+  "off-exp": {
+    "message": "插件完全關閉。"
+  },
+  "lite-exp": {
+    "message": "通過修改請求頭繞過部分網站的限制。"
+  },
+  "full-exp": {
+    "message": "修改請求頭並將部分請求通過代理服務器轉發。對大多數用戶推薦此模式。"
+  }
+}

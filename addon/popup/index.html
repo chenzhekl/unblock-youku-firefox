@@ -8,11 +8,30 @@
         <link rel="stylesheet" type="text/css" href="index.css">
     </head>
     <body>
-        <div class="label">Choose mode</div>
+        <div class="label" data-i18n="choose-mode">Choose a mode</div>
         <div class="btn-group">
-            <button id="off" class="btn">OFF</button>
-            <button id="lite" class="btn">LITE</button>
-            <button id="full" class="btn">FULL</button>
+            <button id="off" class="btn" title="Turned off." data-i18n="off">OFF</button>
+            <button id="lite" class="btn" title="Modify the request header to bypass restriction of limited websites." data-i18n="lite">LITE</button>
+            <button id="full" class="btn" title="Modify the request header and send specific requests through the proxy server. This mode is recommended for most users." data-i18n="full">FULL</button>
+        </div>
+        <div class="list">
+            <ul>
+                <li>
+                    <div class="li-title" data-i18n="off">OFF</div>
+                    <div class="li-content" data-i18n="off-exp">Turned off.</div>
+                </li>
+                <li>
+                    <div class="li-title" data-i18n="lite">LITE</div>
+                    <div class="li-content" data-i18n="lite-exp">Modify the request header to bypass restriction of limited websites.</div>
+                </li>
+                <li>
+                    <div class="li-title" data-i18n="full">FULL</div>
+                    <div class="li-content" data-i18n="full-exp">Modify the request header and send specific requests through the proxy server. This mode is recommended for most users.</div>
+                </li>
+            </ul>
+        </div>
+        <div class="footer">
+            Unblock Youku Firefox
         </div>
     </body>
 </html>

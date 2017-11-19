@@ -1,0 +1,23 @@
+{
+  "choose-mode": {
+    "message": "Choose a mode"
+  },
+  "off": {
+    "message": "OFF"
+  },
+  "lite": {
+    "message": "LITE"
+  },
+  "full": {
+    "message": "FULL"
+  },
+  "off-exp": {
+    "message": "Turned off."
+  },
+  "lite-exp": {
+    "message": "Modify the request header to bypass restriction of limited websites."
+  },
+  "full-exp": {
+    "message": "Modify the request header and send specific requests through the proxy server. This mode is recommended for most users."
+  }
+}

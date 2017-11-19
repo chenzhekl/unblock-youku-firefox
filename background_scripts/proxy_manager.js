@@ -20,7 +20,7 @@ import HeaderModifier from './header_modifier'
 import Redirector from './redirector'
 import Proxy from './proxy'
 
-export const mode = {
+export const modes = {
   OFF: 'OFF',
   LITE: 'LITE',
   FULL: 'FULL'
@@ -41,11 +41,28 @@ export default class ProxyManager {
     this.proxy = new Proxy()
 
     this.events = new EventSystem()
-    this.setModeOff()
+
+    browser.storage.local.get({
+      mode: modes.OFF
+    }).then((status) => {
+      switch (status.mode) {
+        case modes.OFF:
+          this.setModeOff()
+          break
+        case modes.LITE:
+          this.setModeLite()
+          break
+        case modes.FULL:
+          this.setModeFull()
+          break
+      }
+    }, () => {
+      this.setModeOff()
+    })
   }
 
   setModeOff () {
-    this.mode = mode.OFF
+    this.mode = modes.OFF
     if (browser.browserAction.setBadgeText) {
       browser.browserAction.setBadgeText({ text: 'OFF' })
       browser.browserAction.setBadgeBackgroundColor({ color: '#a50000' })
@@ -53,19 +70,23 @@ export default class ProxyManager {
     }
     browser.browserAction.setTitle({ title: 'Unblock Youku (OFF)' })
 
+    browser.storage.local.set({ mode: modes.OFF })
+
     this.resetAll()
 
     this.events.emit(events.MODE_CHANGED, this.mode)
   }
 
   async setModeLite () {
-    this.mode = mode.LITE
+    this.mode = modes.LITE
     if (browser.browserAction.setBadgeText) {
       browser.browserAction.setBadgeText({text: 'LITE'})
       browser.browserAction.setBadgeBackgroundColor({color: '#0079a5'})
       browser.browserAction.setIcon({path: {19: 'icons/icon19.png'}})
     }
     browser.browserAction.setTitle({ title: 'Unblock Youku (LITE)' })
+
+    browser.storage.local.set({ mode: modes.LITE })
 
     this.resetAll()
     await this.headerModifier.setup()
@@ -75,13 +96,15 @@ export default class ProxyManager {
   }
 
   async setModeFull () {
-    this.mode = mode.FULL
+    this.mode = modes.FULL
     if (browser.browserAction.setBadgeText) {
       browser.browserAction.setBadgeText({text: 'FULL'})
       browser.browserAction.setBadgeBackgroundColor({color: '#339b1d'})
       browser.browserAction.setIcon({path: {19: 'icons/icon19.png'}})
     }
     browser.browserAction.setTitle({ title: 'Unblock Youku (FULL)' })
+
+    browser.storage.local.set({ mode: modes.FULL })
 
     this.resetAll()
     await this.headerModifier.setup()

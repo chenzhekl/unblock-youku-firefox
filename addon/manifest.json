@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "unblock-youku-firefox",
     "description": "Port of the popular chrome extension Unblock-Youku",
-    "version": "0.1.4",
+    "version": "0.2.0",
     "author": "Zhe Chen",
     "homepage_url": "https://github.com/chenzhekl/unblock-youku-firefox",
 
@@ -23,6 +23,7 @@
     },
 
     "permissions":[
+        "storage",
         "proxy",
         "webRequest",
         "webRequestBlocking",
@@ -34,5 +35,7 @@
         "gecko": {
             "id": "{bfce6844-0d42-4209-a2fd-e32029491567}"
         }
-    }
+    },
+
+    "default_locale": "en"
 }

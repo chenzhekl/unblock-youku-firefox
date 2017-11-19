@@ -2,7 +2,7 @@
 
 This is the port of the popular chrome extension [Unblock-Youku](https://github.com/uku/Unblock-Youku).
 
-Currently in sync with Unblock Youku chrome v3.6.12.
+Currently in sync with Unblock Youku chrome v3.6.13.
 
 ## Install
 
