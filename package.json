@@ -5,16 +5,10 @@
         "build": "node make.js && webpack"
     },
     "devDependencies": {
-        "standard": "^10.0.3",
+        "eslint": "^4.11.0",
+        "eslint-config-standard": "^10.2.1",
+        "eslint-plugin-promise": "^3.6.0",
+        "eslint-plugin-standard": "^3.0.1",
         "webpack": "^3.6.0"
-    },
-    "standard": {
-        "globals": [
-            "browser"
-        ],
-        "ignore": [
-            "./common/do_not_want_to_maintain.js",
-            "./addon/"
-        ]
     }
 }
