@@ -1,4 +1,14 @@
 {
+  "extensionName": {
+    "message": "unblock-youku-firefox",
+    "description": "Name of the extension."
+  },
+
+  "extensionDescription": {
+    "message": "Port of the popular chrome extension Unblock-Youku.",
+    "description": "Description of the extension."
+  },
+
   "choose-mode": {
     "message": "Choose a mode"
   },

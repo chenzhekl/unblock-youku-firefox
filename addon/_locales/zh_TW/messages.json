@@ -1,4 +1,14 @@
 {
+  "extensionName": {
+    "message": "unblock-youku-firefox",
+    "description": "Name of the extension."
+  },
+
+  "extensionDescription": {
+    "message": "Chrome 擴展程序 Unblock-Youku 的 Firefox 移植.",
+    "description": "Description of the extension."
+  },
+
   "choose-mode": {
     "message": "請選擇模式"
   },
