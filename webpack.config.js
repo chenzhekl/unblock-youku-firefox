@@ -2,8 +2,8 @@ const path = require('path')
 
 module.exports = {
   entry: {
-    popup: './popup/index.js',
-    background: './background_scripts/index.js',
+    popup: './src/popup/index.js',
+    background: './src/background_scripts/index.js',
   },
   output: {
     path: path.resolve(__dirname, 'addon'),

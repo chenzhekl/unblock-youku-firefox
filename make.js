@@ -1,7 +1,7 @@
 const fs = require('fs')
 
 const pac = fs.readFileSync('./addon/url_db.json')
-const template = fs.readFileSync('./common/black_hole.js')
+const template = fs.readFileSync('./src/common/black_hole.js')
 
 const output = `const urlDb = ${pac};\n${template}`
 
