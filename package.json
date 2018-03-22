@@ -7,10 +7,12 @@
     "devDependencies": {
         "eslint": "^4.11.0",
         "eslint-config-standard": "^10.2.1",
-        "eslint-plugin-promise": "^3.6.0",
-        "eslint-plugin-standard": "^3.0.1",
         "eslint-plugin-import": "^2.8.0",
         "eslint-plugin-node": "^5.2.1",
+        "eslint-plugin-prettier": "^2.6.0",
+        "eslint-plugin-promise": "^3.6.0",
+        "eslint-plugin-standard": "^3.0.1",
+        "prettier": "^1.11.1",
         "webpack": "^3.6.0"
     }
 }

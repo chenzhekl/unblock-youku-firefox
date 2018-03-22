@@ -16,39 +16,39 @@
  */
 
 export default class EventSystem {
-  constructor () {
-    this.eventMap = {}
+  constructor() {
+    this.eventMap = {};
   }
 
-  addEventListener (eventName, listener) {
+  addEventListener(eventName, listener) {
     if (!(eventName in this.eventMap)) {
-      this.eventMap[eventName] = new Set()
+      this.eventMap[eventName] = new Set();
     }
 
-    this.eventMap[eventName].add(listener)
+    this.eventMap[eventName].add(listener);
   }
 
-  removeEventListener (eventName, listener) {
+  removeEventListener(eventName, listener) {
     if (!(eventName in this.eventMap)) {
-      return false
+      return false;
     }
 
-    return this.eventMap[eventName].delete(listener)
+    return this.eventMap[eventName].delete(listener);
   }
 
-  clearEventListeners (eventName) {
-    delete this.eventMap[eventName]
+  clearEventListeners(eventName) {
+    delete this.eventMap[eventName];
   }
 
-  emit (eventName, ...params) {
+  emit(eventName, ...params) {
     if (!(eventName in this.eventMap)) {
-      return false
+      return false;
     }
 
-    this.eventMap[eventName].forEach((listener) => {
-      listener(...params)
-    })
+    this.eventMap[eventName].forEach(listener => {
+      listener(...params);
+    });
 
-    return true
+    return true;
   }
 }

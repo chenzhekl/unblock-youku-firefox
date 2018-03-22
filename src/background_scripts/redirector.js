@@ -15,43 +15,54 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { loadURLDb } from '../common/url_db'
+import { loadURLDb } from "../common/url_db";
 
 export default class Redirector {
-  constructor (defaultServer, backupServer) {
-    this.defaultRedirectServer = defaultServer
-    this.backupRedirectServer = backupServer
+  constructor(defaultServer, backupServer) {
+    this.defaultRedirectServer = defaultServer;
+    this.backupRedirectServer = backupServer;
 
-    this.redirector = (details) => {
-      if (details.url.slice(-15) === 'crossdomain.xml') {
-        return {}
+    this.redirector = details => {
+      if (details.url.slice(-15) === "crossdomain.xml") {
+        return {};
       }
 
-      let redirectURL = null
+      let redirectURL = null;
 
       // special treatment for play.baidu
-      if (details.url.slice(0, 41) === 'http://play.baidu.com/data/music/songlink') {
-        redirectURL = 'http://play.baidu.com/data/cloud/songlink' + details.url.slice(41)
-        return {redirectUrl: redirectURL}
+      if (
+        details.url.slice(0, 41) === "http://play.baidu.com/data/music/songlink"
+      ) {
+        redirectURL =
+          "http://play.baidu.com/data/cloud/songlink" + details.url.slice(41);
+        return { redirectUrl: redirectURL };
       }
 
-      if (details.url.startsWith('http://')) {
-        redirectURL = 'http://' + this.defaultRedirectServer + '/http/' + details.url.substring('http://'.length)
-      } else if (details.url.startsWith('https://')) {
-        redirectURL = 'http://' + this.defaultRedirectServer + '/https/' + details.url.substring('https://'.length)
+      if (details.url.startsWith("http://")) {
+        redirectURL =
+          "http://" +
+          this.defaultRedirectServer +
+          "/http/" +
+          details.url.substring("http://".length);
+      } else if (details.url.startsWith("https://")) {
+        redirectURL =
+          "http://" +
+          this.defaultRedirectServer +
+          "/https/" +
+          details.url.substring("https://".length);
       }
 
       if (redirectURL !== null) {
-        return {redirectUrl: redirectURL}
+        return { redirectUrl: redirectURL };
       }
-      return {}
-    }
+      return {};
+    };
   }
 
-  async setup () {
+  async setup() {
     if (!this.filter) {
-      const db = await loadURLDb('../url_db.json')
-      this.filter = db.redirectURLs
+      const db = await loadURLDb("../url_db.json");
+      this.filter = db.redirectURLs;
     }
 
     if (!browser.webRequest.onBeforeRequest.hasListener(this.redirector)) {
@@ -60,14 +71,14 @@ export default class Redirector {
         {
           urls: this.filter
         },
-        ['blocking']
-      )
+        ["blocking"]
+      );
     }
   }
 
-  clear () {
+  clear() {
     if (browser.webRequest.onBeforeRequest.hasListener(this.redirector)) {
-      browser.webRequest.onBeforeRequest.removeListener(this.redirector)
+      browser.webRequest.onBeforeRequest.removeListener(this.redirector);
     }
   }
 }

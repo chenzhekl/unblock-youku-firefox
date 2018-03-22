@@ -15,10 +15,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export async function loadURLDb (path) {
-  const urlDbURL = browser.runtime.getURL(path)
-  const response = await fetch(urlDbURL)
-  const urlDbContent = await response.json()
+export async function loadURLDb(path) {
+  const urlDbURL = browser.runtime.getURL(path);
+  const response = await fetch(urlDbURL);
+  const urlDbContent = await response.json();
 
-  return urlDbContent
+  return urlDbContent;
 }

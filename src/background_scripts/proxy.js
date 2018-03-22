@@ -21,14 +21,14 @@ export default class Proxy {
   //   this.backupProxyServer = backupServer
   // }
 
-  setup () {
+  setup() {
     browser.proxy.onProxyError.addListener(error => {
-      console.error(`Proxy error: ${error.message}`)
-    })
-    browser.proxy.register('../pac/index.js')
+      console.error(`Proxy error: ${error.message}`);
+    });
+    browser.proxy.register("../pac/index.js");
   }
 
-  clear () {
-    browser.proxy.unregister()
+  clear() {
+    browser.proxy.unregister();
   }
 }

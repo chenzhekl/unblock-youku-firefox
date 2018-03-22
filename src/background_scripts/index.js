@@ -15,6 +15,6 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import ProxyManager from './proxy_manager'
+import ProxyManager from "./proxy_manager";
 
-window.manager = new ProxyManager()
+window.manager = new ProxyManager();

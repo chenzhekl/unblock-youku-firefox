@@ -15,43 +15,52 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { loadURLDb } from '../common/url_db'
+import { loadURLDb } from "../common/url_db";
 
 export default class HeaderModifier {
-  constructor (ipAddr) {
-    this.headerModifier = (details) => {
-      details.requestHeaders.push({
-        name: 'X-Forwarded-For',
-        value: ipAddr
-      }, {
-        name: 'Client-IP',
-        value: ipAddr
-      })
+  constructor(ipAddr) {
+    this.headerModifier = details => {
+      details.requestHeaders.push(
+        {
+          name: "X-Forwarded-For",
+          value: ipAddr
+        },
+        {
+          name: "Client-IP",
+          value: ipAddr
+        }
+      );
 
-      return { requestHeaders: details.requestHeaders }
-    }
+      return { requestHeaders: details.requestHeaders };
+    };
   }
 
-  async setup () {
+  async setup() {
     if (!this.filter) {
-      const db = await loadURLDb('../url_db.json')
-      this.filter = db.headerURLs
+      const db = await loadURLDb("../url_db.json");
+      this.filter = db.headerURLs;
     }
 
-    if (!browser.webRequest.onBeforeSendHeaders.hasListener(this.headerModifier)) {
+    if (
+      !browser.webRequest.onBeforeSendHeaders.hasListener(this.headerModifier)
+    ) {
       browser.webRequest.onBeforeSendHeaders.addListener(
         this.headerModifier,
         {
           urls: this.filter
         },
-        ['requestHeaders', 'blocking']
-      )
+        ["requestHeaders", "blocking"]
+      );
     }
   }
 
-  clear () {
-    if (browser.webRequest.onBeforeSendHeaders.hasListener(this.headerModifier)) {
-      browser.webRequest.onBeforeSendHeaders.removeListener(this.headerModifier)
+  clear() {
+    if (
+      browser.webRequest.onBeforeSendHeaders.hasListener(this.headerModifier)
+    ) {
+      browser.webRequest.onBeforeSendHeaders.removeListener(
+        this.headerModifier
+      );
     }
   }
 }
