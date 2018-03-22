@@ -7,3 +7,5 @@ node_modules/
 addon/background/index.js
 addon/pac/index.js
 addon/popup/index.js
+
+yarn-error.log

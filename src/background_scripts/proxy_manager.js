@@ -15,7 +15,6 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import EventSystem from "../common/event_system";
 import HeaderModifier from "./header_modifier";
 import Redirector from "./redirector";
 import Proxy from "./proxy";
