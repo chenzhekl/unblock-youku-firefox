@@ -6,9 +6,6 @@
     "build": "node make.js && webpack"
   },
   "devDependencies": {
-    "eslint": "^4.11.0",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.0",
     "prettier": "^1.11.1",
     "webpack": "^3.6.0"
   }

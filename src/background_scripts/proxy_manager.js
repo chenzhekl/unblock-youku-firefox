@@ -42,8 +42,6 @@ export default class ProxyManager {
     );
     this.proxy = new Proxy();
 
-    this.events = new EventSystem();
-
     browser.storage.local
       .get({
         mode: modes.OFF
@@ -80,8 +78,6 @@ export default class ProxyManager {
     browser.storage.local.set({ mode: modes.OFF });
 
     this.resetAll();
-
-    this.events.emit(events.MODE_CHANGED, this.mode);
   }
 
   async setModeLite() {
@@ -98,8 +94,6 @@ export default class ProxyManager {
     this.resetAll();
     await this.headerModifier.setup();
     await this.redirector.setup();
-
-    this.events.emit(events.MODE_CHANGED, this.mode);
   }
 
   async setModeFull() {
@@ -116,8 +110,6 @@ export default class ProxyManager {
     this.resetAll();
     await this.headerModifier.setup();
     this.proxy.setup();
-
-    this.events.emit(events.MODE_CHANGED, this.mode);
   }
 
   resetAll() {
