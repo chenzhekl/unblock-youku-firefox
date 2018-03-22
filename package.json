@@ -1,14 +1,15 @@
 {
-    "name": "unblock-youku-firefox",
-    "description": "Port of the pouplar chrome extension Unblock-Youku",
-    "scripts": {
-        "build": "node make.js && webpack"
-    },
-    "devDependencies": {
-        "eslint": "^4.11.0",
-        "eslint-config-prettier": "^2.9.0",
-        "eslint-plugin-prettier": "^2.6.0",
-        "prettier": "^1.11.1",
-        "webpack": "^3.6.0"
-    }
+  "name": "unblock-youku-firefox",
+  "description": "Port of the pouplar chrome extension Unblock-Youku",
+  "version": "0.2.2",
+  "scripts": {
+    "build": "node make.js && webpack"
+  },
+  "devDependencies": {
+    "eslint": "^4.11.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "prettier": "^1.11.1",
+    "webpack": "^3.6.0"
+  }
 }
