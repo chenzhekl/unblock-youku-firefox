@@ -11,6 +11,7 @@
     "http://bangumi.bilibili.com/*",
     "http://kandian.com/player/getEpgInfo*"
   ],
+
   "redirectURLs": [
     "http://acs.youku.com/*",
     "http://v.youku.com/player/*",
@@ -156,6 +157,7 @@
     "http://vip.sports.cntv.cn/servlets/encryptvideopath.do*",
     "http://211.151.157.15/*"
   ],
+
   "proxyURLs": [
     "http://www.tudou.com/programs/view/*",
     "http://www.tudou.com/albumplay/*",
@@ -251,9 +253,9 @@
 
     "http://music.163.com/eapi/*"
   ],
-  "proxyBypassURLs": [
-    "http://bangumi.bilibili.com/index/ding-count.json"
-  ],
+
+  "proxyBypassURLs": ["http://bangumi.bilibili.com/index/ding-count.json"],
+
   "pacProxyURLs": [
     "http://a.play.api.3g.youku.com/common/v3/play?*",
     "http://i.play.api.3g.youku.com/common/v3/play?*",
@@ -367,6 +369,6 @@
     "http://210.129.145.150/*",
     "http://182.16.230.98/*"
   ],
-  "pacProxyBypassURLs": [
-  ]
+
+  "pacProxyBypassURLs": []
 }

@@ -1,15 +1,5 @@
 module.exports = {
-  env: {
-    browser: true,
-    es6: true,
-    webextensions: true
-  },
-
-  plugins: ["prettier"],
-
-  rules: {
-    "prettier/prettier": "error"
-  },
+  extends: ["plugin:prettier/recommended"],
 
   parserOptions: {
     sourceType: "module",

@@ -1,41 +1,42 @@
 {
-    "manifest_version": 2,
-    "name": "__MSG_extensionName__",
-    "description": "__MSG_extensionDescription__",
-    "version": "0.2.2",
-    "author": "Zhe Chen",
-    "homepage_url": "https://github.com/chenzhekl/unblock-youku-firefox",
+  "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "0.2.2",
+  "author": "Zhe Chen",
+  "homepage_url": "https://github.com/chenzhekl/unblock-youku-firefox",
 
-    "icons": {
-        "16": "icons/icon16.png",
-        "48": "icons/icon48.png",
-        "128": "icons/icon128.png"
-    },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
 
-    "browser_action": {
-        "default_title": "Unblock Youku isn't working properly! Visit http://uku.im/faq for solutions.",
-        "default_icon": "icons/icon19gray.png",
-        "default_popup": "popup/index.html"
-    },
+  "browser_action": {
+    "default_title":
+      "Unblock Youku isn't working properly! Visit http://uku.im/faq for solutions.",
+    "default_icon": "icons/icon19gray.png",
+    "default_popup": "popup/index.html"
+  },
 
-    "background": {
-        "scripts": ["background/index.js"]
-    },
+  "background": {
+    "scripts": ["background/index.js"]
+  },
 
-    "permissions":[
-        "storage",
-        "proxy",
-        "webRequest",
-        "webRequestBlocking",
-        "http://*/*",
-        "https://*/*"
-    ],
+  "permissions": [
+    "storage",
+    "proxy",
+    "webRequest",
+    "webRequestBlocking",
+    "http://*/*",
+    "https://*/*"
+  ],
 
-    "applications": {
-        "gecko": {
-            "id": "{bfce6844-0d42-4209-a2fd-e32029491567}"
-        }
-    },
+  "applications": {
+    "gecko": {
+      "id": "{bfce6844-0d42-4209-a2fd-e32029491567}"
+    }
+  },
 
-    "default_locale": "en"
+  "default_locale": "en"
 }
