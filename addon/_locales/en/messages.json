@@ -1,6 +1,6 @@
 {
   "extensionName": {
-    "message": "unblock-youku-firefox",
+    "message": "Unblock Youku",
     "description": "Name of the extension."
   },
 
@@ -25,9 +25,11 @@
     "message": "Turned off."
   },
   "lite-exp": {
-    "message": "Modify the request header to bypass restriction of limited websites."
+    "message":
+      "Modify the request header to bypass restriction of limited websites."
   },
   "full-exp": {
-    "message": "Modify the request header and send specific requests through the proxy server. This mode is recommended for most users."
+    "message":
+      "Modify the request header and send specific requests through the proxy server. This mode is recommended for most users."
   }
 }

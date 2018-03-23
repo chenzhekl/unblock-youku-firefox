@@ -1,11 +1,11 @@
 {
   "extensionName": {
-    "message": "unblock-youku-firefox",
+    "message": "Unblock Youku",
     "description": "Name of the extension."
   },
 
   "extensionDescription": {
-    "message": "Chrome 擴展程序 Unblock-Youku 的 Firefox 移植.",
+    "message": "Chrome 擴展程序 Unblock-Youku 的移植.",
     "description": "Description of the extension."
   },
 
@@ -28,6 +28,7 @@
     "message": "通過修改請求頭繞過部分網站的限制。"
   },
   "full-exp": {
-    "message": "修改請求頭並將部分請求通過代理服務器轉發。對大多數用戶推薦此模式。"
+    "message":
+      "修改請求頭並將部分請求通過代理服務器轉發。對大多數用戶推薦此模式。"
   }
 }
