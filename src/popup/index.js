@@ -17,23 +17,41 @@
 
 import { modes } from "../background_scripts/proxy_manager";
 
-const background = browser.extension.getBackgroundPage();
+const runtime = browser.runtime;
 
 window.onload = async () => {
   document.querySelector("#off").addEventListener("click", () => {
-    background.manager.setModeOff();
-    document.querySelector(".active").classList.remove("active");
-    document.querySelector("#off").classList.toggle("active");
+    runtime
+      .sendMessage({
+        target: "background",
+        method: "setModeOff"
+      })
+      .then(() => {
+        document.querySelector(".active").classList.remove("active");
+        document.querySelector("#off").classList.toggle("active");
+      });
   });
   document.querySelector("#lite").addEventListener("click", () => {
-    background.manager.setModeLite();
-    document.querySelector(".active").classList.remove("active");
-    document.querySelector("#lite").classList.toggle("active");
+    runtime
+      .sendMessage({
+        target: "background",
+        method: "setModeLite"
+      })
+      .then(() => {
+        document.querySelector(".active").classList.remove("active");
+        document.querySelector("#lite").classList.toggle("active");
+      });
   });
   document.querySelector("#full").addEventListener("click", () => {
-    background.manager.setModeFull();
-    document.querySelector(".active").classList.remove("active");
-    document.querySelector("#full").classList.toggle("active");
+    runtime
+      .sendMessage({
+        target: "background",
+        method: "setModeFull"
+      })
+      .then(() => {
+        document.querySelector(".active").classList.remove("active");
+        document.querySelector("#full").classList.toggle("active");
+      });
   });
 
   const status = await browser.storage.local.get({

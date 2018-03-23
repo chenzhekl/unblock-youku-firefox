@@ -25,10 +25,6 @@ export const modes = {
   FULL: "FULL"
 };
 
-export const events = {
-  MODE_CHANGED: "MODE_CHANGED"
-};
-
 export default class ProxyManager {
   constructor() {
     this.ipAddr = `220.181.111.${Math.floor(Math.random() * 254 + 1)}`;
@@ -64,6 +60,32 @@ export default class ProxyManager {
           this.setModeOff();
         }
       );
+
+    this.handleMessage = this.handleMessage.bind(this);
+    const onMessage = browser.runtime.onMessage;
+    if (!onMessage.hasListener(this.handleMessage)) {
+      onMessage.addListener(this.handleMessage);
+    }
+  }
+
+  handleMessage(message, sender, sendResponse) {
+    if (message.target !== "background") {
+      return;
+    }
+
+    switch (message.method) {
+      case "setModeOff":
+        this.setModeOff();
+        return Promise.resolve(true);
+      case "setModeLite":
+        this.setModeLite();
+        return Promise.resolve(true);
+      case "setModeFull":
+        this.setModeFull();
+        return Promise.resolve(true);
+    }
+
+    return Promise.reject(false);
   }
 
   setModeOff() {
