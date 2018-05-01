@@ -9,7 +9,10 @@
     "http://www.bilibili.com/*",
     "http://interface.bilibili.com/*",
     "http://bangumi.bilibili.com/*",
-    "http://kandian.com/player/getEpgInfo*"
+    "https://pstream.api.mgtv.com/*",
+    "http://kandian.com/player/getEpgInfo*",
+    "http://u.y.qq.com/cgi-bin/*",
+    "https://u.y.qq.com/*"
   ],
 
   "redirectURLs": [
@@ -27,6 +30,8 @@
     "http://v.youku.com/page/playlist/*",
     "http://ups.youku.com/ups/get.json*",
     "https://ups.youku.com/",
+    "https://v.youku.com/*",
+    "https://acs.youku.com/*",
     "http://video.tudou.com/v/*",
     "http://www.tudou.com/a/*",
     "http://www.tudou.com/v/*",
@@ -367,7 +372,10 @@
     "http://180.153.225.136/*",
     "http://118.244.244.124/*",
     "http://210.129.145.150/*",
-    "http://182.16.230.98/*"
+    "http://182.16.230.98/*",
+
+    "http://103.65.41.126/eapi/*",
+    "http://103.65.41.125/eapi/*"
   ],
 
   "pacProxyBypassURLs": []
