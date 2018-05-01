@@ -3,7 +3,7 @@
   "description": "Port of the pouplar chrome extension Unblock-Youku",
   "version": "0.2.4",
   "scripts": {
-    "build": "node make.js && webpack"
+    "build": "webpack"
   },
   "devDependencies": {
     "prettier": "^1.11.1",

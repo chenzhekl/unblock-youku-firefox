@@ -15,20 +15,53 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export default class Proxy {
-  // constructor (defaultServer, backupServer) {
-  //   this.defaultProxyServer = defaultServer
-  //   this.backupProxyServer = backupServer
-  // }
+import { loadURLDb } from "../common/url_db";
 
-  setup() {
+export default class Proxy {
+  constructor() {
+    this.requestProxier = request => {
+      if (this.bypass.includes(request.url)) {
+        return {
+          type: "DIRECT"
+        };
+      }
+
+      return [
+        {
+          type: "HTTPS",
+          host: "secure.uku.im",
+          port: "8443"
+        },
+        {
+          type: "HTTPS",
+          host: "secure.uku.im",
+          port: "993"
+        }
+      ];
+    };
+  }
+
+  async setup() {
+    if (!this.filter) {
+      const urlDb = await loadURLDb("../url_db.json");
+      this.filter = urlDb.redirectURLs.concat(urlDb.proxyURLs);
+      this.bypass = urlDb.proxyBypassURLs;
+    }
+
     browser.proxy.onProxyError.addListener(error => {
       console.error(`Proxy error: ${error.message}`);
     });
-    browser.proxy.register("../pac/index.js");
+
+    if (!browser.proxy.onRequest.hasListener(this.requestProxier)) {
+      browser.proxy.onRequest.addListener(this.requestProxier, {
+        urls: this.filter
+      });
+    }
   }
 
   clear() {
-    browser.proxy.unregister();
+    if (browser.proxy.onRequest.hasListener(this.requestProxier)) {
+      browser.proxy.onRequest.removeListener(this.requestProxier);
+    }
   }
 }

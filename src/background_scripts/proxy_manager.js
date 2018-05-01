@@ -131,7 +131,7 @@ export default class ProxyManager {
 
     this.resetAll();
     await this.headerModifier.setup();
-    this.proxy.setup();
+    await this.proxy.setup();
   }
 
   resetAll() {
