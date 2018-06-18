@@ -11,14 +11,13 @@
     "128": "icons/icon128.png"
   },
   "browser_action": {
-    "default_title": "Unblock Youku isn't working properly! Visit http://uku.im/faq for solutions.",
+    "default_title":
+      "Unblock Youku isn't working properly! Visit http://uku.im/faq for solutions.",
     "default_icon": "icons/icon19gray.png",
     "default_popup": "popup/index.html"
   },
   "background": {
-    "scripts": [
-      "background/index.js"
-    ]
+    "scripts": ["background/index.js"]
   },
   "permissions": [
     "storage",

@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { loadURLDb } from "../common/url_db";
+import URL_DB from "../common/url_db";
 
 export default class Redirector {
   constructor(defaultServer, backupServer) {
@@ -60,16 +60,11 @@ export default class Redirector {
   }
 
   async setup() {
-    if (!this.filter) {
-      const db = await loadURLDb("../url_db.json");
-      this.filter = db.redirectURLs;
-    }
-
     if (!browser.webRequest.onBeforeRequest.hasListener(this.redirector)) {
       browser.webRequest.onBeforeRequest.addListener(
         this.redirector,
         {
-          urls: this.filter
+          urls: URL_DB.redirectURLs
         },
         ["blocking"]
       );
