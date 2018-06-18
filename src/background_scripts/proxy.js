@@ -15,15 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { loadURLDb } from "../common/url_db";
+import URL_DB from "../common/url_db";
 
 export default class Proxy {
   constructor() {
     this.requestProxier = request => {
-      if (this.bypass.includes(request.url)) {
-        return {
-          type: "DIRECT"
-        };
+      if (URL_DB.proxyBypassURLs.includes(request.url)) {
+        return { type: "DIRECT" };
       }
 
       return [
@@ -39,27 +37,29 @@ export default class Proxy {
         }
       ];
     };
+
+    this.errorHandler = error => {
+      console.error(`Proxy error: ${error.message}`);
+    };
   }
 
   async setup() {
-    if (!this.filter) {
-      const urlDb = await loadURLDb("../url_db.json");
-      this.filter = urlDb.redirectURLs.concat(urlDb.proxyURLs);
-      this.bypass = urlDb.proxyBypassURLs;
+    if (!browser.proxy.onError.hasListener(this.errorHandler)) {
+      browser.proxy.onError.addListener(this.errorHandler);
     }
-
-    browser.proxy.onProxyError.addListener(error => {
-      console.error(`Proxy error: ${error.message}`);
-    });
 
     if (!browser.proxy.onRequest.hasListener(this.requestProxier)) {
       browser.proxy.onRequest.addListener(this.requestProxier, {
-        urls: this.filter
+        urls: URL_DB.proxyURLs
       });
     }
   }
 
   clear() {
+    if (browser.proxy.onError.hasListener(this.errorHandler)) {
+      browser.proxy.onError.removeListener(this.errorHandler);
+    }
+
     if (browser.proxy.onRequest.hasListener(this.requestProxier)) {
       browser.proxy.onRequest.removeListener(this.requestProxier);
     }

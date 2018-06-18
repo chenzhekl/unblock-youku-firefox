@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { loadURLDb } from "../common/url_db";
+import URL_DB from "../common/url_db";
 
 export default class HeaderModifier {
   constructor(ipAddr) {
@@ -36,18 +36,13 @@ export default class HeaderModifier {
   }
 
   async setup() {
-    if (!this.filter) {
-      const db = await loadURLDb("../url_db.json");
-      this.filter = db.headerURLs;
-    }
-
     if (
       !browser.webRequest.onBeforeSendHeaders.hasListener(this.headerModifier)
     ) {
       browser.webRequest.onBeforeSendHeaders.addListener(
         this.headerModifier,
         {
-          urls: this.filter
+          urls: URL_DB.headerURLs
         },
         ["requestHeaders", "blocking"]
       );
