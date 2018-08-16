@@ -2,7 +2,7 @@
 
 This is the port of the popular chrome extension [Unblock-Youku](https://github.com/uku/Unblock-Youku).
 
-Currently in sync with Unblock Youku chrome v3.6.17.
+Currently in sync with Unblock Youku chrome v3.8.2.
 
 ## Install
 
@@ -10,25 +10,25 @@ Currently in sync with Unblock Youku chrome v3.6.17.
 
 ## Build
 
-1. Clone the repository;
+1.  Clone the repository;
 
 ```
 git clone https://github.com/chenzhekl/unblock-youku-firefox.git
 ```
 
-2. Install dependencies;
+2.  Install dependencies;
 
 ```
 yarn
 ```
 
-3. Build the add-on;
+3.  Build the add-on;
 
 ```
 yarn run build
 ```
 
-4. Load it from Firefox.
+4.  Load it from Firefox.
 
 ## License
 
