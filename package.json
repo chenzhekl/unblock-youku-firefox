@@ -1,7 +1,7 @@
 {
   "name": "unblock-youku-firefox",
   "description": "Port of the pouplar chrome extension Unblock-Youku",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "scripts": {
     "build": "webpack"
   },
