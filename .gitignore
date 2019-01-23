@@ -2,6 +2,7 @@
 __MACOSX
 
 .idea/
+.vscode/
 node_modules/
 
 addon/background/index.js
