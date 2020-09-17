@@ -6,7 +6,7 @@
     "build": "webpack"
   },
   "devDependencies": {
-    "prettier": "^1.11.1",
+    "prettier": "^2.1.2",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.6"
   }

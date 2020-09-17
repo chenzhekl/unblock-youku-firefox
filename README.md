@@ -19,13 +19,13 @@ git clone https://github.com/chenzhekl/unblock-youku-firefox.git
 2.  Install dependencies;
 
 ```
-yarn
+npm install
 ```
 
 3.  Build the add-on;
 
 ```
-yarn run build
+npm run build
 ```
 
 4.  Load it from Firefox.
