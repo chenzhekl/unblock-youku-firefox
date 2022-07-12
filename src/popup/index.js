@@ -31,17 +31,6 @@ window.onload = async () => {
         document.querySelector("#off").classList.toggle("active");
       });
   });
-  document.querySelector("#lite").addEventListener("click", () => {
-    runtime
-      .sendMessage({
-        target: "background",
-        method: "setModeLite"
-      })
-      .then(() => {
-        document.querySelector(".active").classList.remove("active");
-        document.querySelector("#lite").classList.toggle("active");
-      });
-  });
   document.querySelector("#full").addEventListener("click", () => {
     runtime
       .sendMessage({

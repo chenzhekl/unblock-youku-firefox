@@ -1,8 +1,8 @@
 ## Unblock Youku Firefox
 
-This is the port of the popular chrome extension [Unblock-Youku](https://github.com/uku/Unblock-Youku).
+This is the port of the popular chrome extension [Unblock-Youku](https://github.com/uku/Unblock-Youku) for Firefox.
 
-Currently in sync with Unblock Youku chrome v3.8.11.
+This addon is currently in sync with Unblock Youku chrome v4.0.0.
 
 ## Install
 

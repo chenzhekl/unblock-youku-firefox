@@ -26,6 +26,42 @@
     "http://*/*",
     "https://*/*"
   ],
+  "content_scripts": [
+    {
+      "matches": ["http://www.tudou.com/*"],
+      "js": ["content_scripts/tudou.js"],
+      "run_at": "document_end",
+      "all_frames": true
+    },
+    {
+      "matches": ["http://play.baidu.com/*"],
+      "css": ["content_scripts/play.baidu.css"],
+      "all_frames": true
+    },
+    {
+      "matches": ["http://music.163.com/*"],
+      "js": ["content_scripts/music.163.js"],
+      "run_at": "document_end",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "http://unblockcn.com/*",
+        "https://unblockcn.com/*",
+        "http://*.unblockcn.com/*",
+        "https://*.unblockcn.com/*",
+        "http://unblockyouku.cn/*",
+        "http://*.unblockyouku.cn/*",
+        "http://724sky.com/*",
+        "http://*.724sky.com/*",
+        "http://tieba.baidu.com/f?kw=unblockcn*",
+        "http://*.tieba.baidu.com/f?kw=unblockcn*"
+      ],
+      "js": ["content_scripts/unblockcn.js"],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ],
   "applications": {
     "gecko": {
       "id": "{bfce6844-0d42-4209-a2fd-e32029491567}"

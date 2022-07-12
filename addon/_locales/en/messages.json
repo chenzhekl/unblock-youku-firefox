@@ -10,23 +10,16 @@
   },
 
   "choose-mode": {
-    "message": "Choose a mode"
+    "message": "Mode"
   },
   "off": {
     "message": "OFF"
-  },
-  "lite": {
-    "message": "LITE"
   },
   "full": {
     "message": "FULL"
   },
   "off-exp": {
     "message": "Turned off."
-  },
-  "lite-exp": {
-    "message":
-      "Modify the request header to bypass restriction of limited websites."
   },
   "full-exp": {
     "message":

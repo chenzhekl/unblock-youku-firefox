@@ -15,12 +15,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import URL_DB from "../common/url_db";
+import { PROXY_BYPASS_URLS, PROXY_URLS } from "../common/url_db";
 
 export default class Proxy {
   constructor() {
-    this.requestProxier = request => {
-      if (URL_DB.proxyBypassURLs.includes(request.url)) {
+    this.requestProxier = (request) => {
+      if (PROXY_BYPASS_URLS.includes(request.url)) {
         return { type: "DIRECT" };
       }
 
@@ -28,17 +28,17 @@ export default class Proxy {
         {
           type: "HTTPS",
           host: "secure.uku.im",
-          port: "8443"
+          port: "8443",
         },
         {
           type: "HTTPS",
           host: "secure.uku.im",
-          port: "993"
-        }
+          port: "993",
+        },
       ];
     };
 
-    this.errorHandler = error => {
+    this.errorHandler = (error) => {
       console.error(`Proxy error: ${error.message}`);
     };
   }
@@ -50,7 +50,7 @@ export default class Proxy {
 
     if (!browser.proxy.onRequest.hasListener(this.requestProxier)) {
       browser.proxy.onRequest.addListener(this.requestProxier, {
-        urls: URL_DB.proxyURLs
+        urls: PROXY_URLS,
       });
     }
   }

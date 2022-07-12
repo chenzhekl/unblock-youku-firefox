@@ -16,26 +16,18 @@
  */
 
 import HeaderModifier from "./header_modifier";
-import Redirector from "./redirector";
 import Proxy from "./proxy";
 
 export const modes = {
   OFF: "OFF",
-  LITE: "LITE",
   FULL: "FULL"
 };
 
 export default class ProxyManager {
   constructor() {
     this.ipAddr = `220.181.111.${Math.floor(Math.random() * 254 + 1)}`;
-    this.defaultRedirectServer = "www.yōukù.com/proxy";
-    this.backupRedirectServer = "bak.yōukù.com/proxy";
 
     this.headerModifier = new HeaderModifier(this.ipAddr);
-    this.redirector = new Redirector(
-      this.defaultRedirectServer,
-      this.backupRedirectServer
-    );
     this.proxy = new Proxy();
 
     browser.storage.local
@@ -47,9 +39,6 @@ export default class ProxyManager {
           switch (status.mode) {
             case modes.OFF:
               this.setModeOff();
-              break;
-            case modes.LITE:
-              this.setModeLite();
               break;
             case modes.FULL:
               this.setModeFull();
@@ -77,9 +66,6 @@ export default class ProxyManager {
       case "setModeOff":
         this.setModeOff();
         return Promise.resolve(true);
-      case "setModeLite":
-        this.setModeLite();
-        return Promise.resolve(true);
       case "setModeFull":
         this.setModeFull();
         return Promise.resolve(true);
@@ -102,22 +88,6 @@ export default class ProxyManager {
     this.resetAll();
   }
 
-  async setModeLite() {
-    this.mode = modes.LITE;
-    if (browser.browserAction.setBadgeText) {
-      browser.browserAction.setBadgeText({ text: "LITE" });
-      browser.browserAction.setBadgeBackgroundColor({ color: "#0079a5" });
-      browser.browserAction.setIcon({ path: { 19: "icons/icon19.png" } });
-    }
-    browser.browserAction.setTitle({ title: "Unblock Youku (LITE)" });
-
-    browser.storage.local.set({ mode: modes.LITE });
-
-    this.resetAll();
-    await this.headerModifier.setup();
-    await this.redirector.setup();
-  }
-
   async setModeFull() {
     this.mode = modes.FULL;
     if (browser.browserAction.setBadgeText) {
@@ -136,7 +106,6 @@ export default class ProxyManager {
 
   resetAll() {
     this.headerModifier.clear();
-    this.redirector.clear();
     this.proxy.clear();
   }
 }

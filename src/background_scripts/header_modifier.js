@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import URL_DB from "../common/url_db";
+import { HEADER_URLS } from "../common/url_db";
 
 export default class HeaderModifier {
   constructor(ipAddr) {
@@ -42,10 +42,9 @@ export default class HeaderModifier {
       browser.webRequest.onBeforeSendHeaders.addListener(
         this.headerModifier,
         {
-          urls: URL_DB.headerURLs
+          urls: HEADER_URLS
         },
-        ["requestHeaders", "blocking"]
-      );
+        ["requestHeaders", "blocking"]);
     }
   }
 

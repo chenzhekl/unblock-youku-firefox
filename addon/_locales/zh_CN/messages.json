@@ -15,17 +15,11 @@
   "off": {
     "message": "关闭"
   },
-  "lite": {
-    "message": "精简"
-  },
   "full": {
     "message": "全开"
   },
   "off-exp": {
     "message": "插件完全关闭。"
-  },
-  "lite-exp": {
-    "message": "通过修改请求头绕过部分网站的限制。"
   },
   "full-exp": {
     "message":
