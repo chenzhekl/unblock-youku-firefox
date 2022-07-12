@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "0.3.6",
+  "version": "0.4.0",
   "author": "Zhe Chen",
   "homepage_url": "https://github.com/chenzhekl/unblock-youku-firefox",
   "icons": {
@@ -62,9 +62,10 @@
       "all_frames": true
     }
   ],
-  "applications": {
+  "browser_specific_settings": {
     "gecko": {
-      "id": "{bfce6844-0d42-4209-a2fd-e32029491567}"
+      "id": "{bfce6844-0d42-4209-a2fd-e32029491567}",
+      "strict_min_version": "91.1.0"
     }
   },
   "default_locale": "en"
