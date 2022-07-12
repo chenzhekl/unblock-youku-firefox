@@ -14,24 +14,6 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-var unblock_youku = unblock_youku || {};
-
-/*
- PLEASE READ THIS FIRST!
- This file contains several lists of URLs, which are used in different unblock modes:
- - The (non-proxy) lite mode of our Chrome extension will use:
-   - header_urls, and
-   - redirect_urls.
- - The (default) standard mode will use:
-   - header_urls,
-   - redirect_urls, and
-   - chrome_proxy_urls.
- - The PAC service (for iOS/Android) will use all lists:
-   - header_urls,
-   - redirect_urls,
-   - chrome_proxy_urls, and
-   - pac_proxy_urls.
- */
 
 /*
  * Note that the HTTPS URLs must NOT have any path portions.
@@ -41,25 +23,22 @@ var unblock_youku = unblock_youku || {};
  * - Right: https://example.com/*
  */
 
-// Just changing headers of these URLs will be sufficient.
-unblock_youku.header_urls = [
-  "http://v.api.hunantv.com/*",
-  "http://live.gslb.letv.com/*",
-  "http://ac.qq.com/*",
+// The HTTP headers of these URLs will be modified.
+export const HEADER_URLS = [
   "http://*.ssports.com/*",
   "http://ssports.com/*",
   "http://ssports.smgbb.cn/*",
-  "http://www.bilibili.com/*",
-  "http://interface.bilibili.com/*",
-  "http://bangumi.bilibili.com/*",
   "https://pstream.api.mgtv.com/*",
   "http://kandian.com/player/getEpgInfo*",
-  "http://u.y.qq.com/cgi-bin/*",
-  "https://u.y.qq.com/*"
 ];
 
-// These URLs can work with the redirect functionality (mainly used in Flash players).
-unblock_youku.redirect_urls = [
+// These URLs will not go through proxy servers.
+export const PROXY_BYPASS_URLS = [
+  "http://bangumi.bilibili.com/index/ding-count.json",
+];
+
+// These URLs will be proxied.
+export const PROXY_URLS = [
   "https://dmd-fifajs-h5-ikuweb.youku.com/*",
   "https://dmd-fifa-h5-ikuweb.youku.com/*",
   "http://acs.youku.com/*",
@@ -82,7 +61,7 @@ unblock_youku.redirect_urls = [
   "http://api.aixifan.com/plays/*",
   "http://www.acfun.cn/video/getVideo*",
   "https://www.acfun.cn/*",
-  "https://v.youku.com/*",
+  // 'https://v.youku.com/*',
   // 'http://v2.tudou.com/*',
   "http://video.tudou.com/v/*",
   "http://www.tudou.com/a/*",
@@ -183,9 +162,9 @@ unblock_youku.redirect_urls = [
   "http://vxml.56.com/json/*",
 
   "http://music.sina.com.cn/yueku/intro/*",
-  //'http://ting.baidu.com/data/music/songlink*',
-  //'http://ting.baidu.com/data/music/songinfo*',
-  //'http://ting.baidu.com/song/*/download*',
+  // 'http://ting.baidu.com/data/music/songlink*',
+  // 'http://ting.baidu.com/data/music/songinfo*',
+  // 'http://ting.baidu.com/song/*/download*',
   "http://music.sina.com.cn/radio/port/webFeatureRadioLimitList.php*",
   "http://play.baidu.com/data/music/songlink*",
 
@@ -197,8 +176,8 @@ unblock_youku.redirect_urls = [
   "http://video.sina.com.cn/interface/l/u/getFocusStatus.php*",
   "http://wtv.v.iask.com/player/ovs1_idc_list.php*",
 
-  //'http://kandian.com/player/getEpgInfo*',  // !!!
-  //'http://cdn.kandian.com/*',
+  // 'http://kandian.com/player/getEpgInfo*',  // !!!
+  // 'http://cdn.kandian.com/*',
   "http://www.yinyuetai.com/insite/*",
   "http://www.yinyuetai.com/main/get-*",
   "http://www.kugou.com/interface/geoip/*",
@@ -229,11 +208,8 @@ unblock_youku.redirect_urls = [
   "http://vip.sports.cntv.cn/check.do*",
   "http://vip.sports.cntv.cn/play.do*",
   "http://vip.sports.cntv.cn/servlets/encryptvideopath.do*",
-  "http://211.151.157.15/*"
-];
+  "http://211.151.157.15/*",
 
-// These URLs have to go through a proxy (for our Chrome extension).
-unblock_youku.chrome_proxy_urls = unblock_youku.redirect_urls.concat([
   "http://www.tudou.com/programs/view/*",
   "http://www.tudou.com/albumplay/*",
   "http://www.tudou.com/listplay/*",
@@ -259,7 +235,7 @@ unblock_youku.chrome_proxy_urls = unblock_youku.redirect_urls.concat([
   "http://bangumi.bilibili.com/api/*",
   "https://bangumi.bilibili.com/*",
   // 'http://live-play.acgvideo.com/live/*',
-  "http://m10.music.126.net/*", //for the testing of netease music
+  "http://m10.music.126.net/*", // for the testing of netease music
 
   "http://douban.fm/*",
   "https://douban.fm/*",
@@ -332,9 +308,10 @@ unblock_youku.chrome_proxy_urls = unblock_youku.redirect_urls.concat([
   "http://aidbak.video.qq.com/fcgi-bin/userip?*",
   "http://pay.video.qq.com/fcgi-bin/paylimit*",
   "http://paybak.video.qq.com/fcgi-bin/paylimit*",
+  "https://*.l.qq.com/*",
   "http://chrome.2345.com/dianhua/index.php?m=call&f=check&*",
 
-  "http://music.163.com/eapi/*"
+  "http://music.163.com/eapi/*",
 
   // 'http://play.baidu.com/*',
   // 'http://zhangmenshiting.baidu.com/*',
@@ -358,154 +335,9 @@ unblock_youku.chrome_proxy_urls = unblock_youku.redirect_urls.concat([
   // 'http://imanhua.com/comic/*',
   // 'http://www.imanhua.com/comic/*',
   // 'http://imanhua.com/v2*',
-  // 'http://www.imanhua.com/v2*'
-]);
+  // 'http://www.imanhua.com/v2*',
 
-// These URLs will not go through proxy servers (for our Chrome extension).
-unblock_youku.chrome_proxy_bypass_urls = [
-  "http://bangumi.bilibili.com/index/ding-count.json"
+  // for development purposes
+  "http://flask-test-iwauxcyxjb.cn-hangzhou.fcapp.run/*",
+  "https://flask-test-iwauxcyxjb.cn-hangzhou.fcapp.run/*",
 ];
-
-// These URLs are for other software, such as iOS/Android Apps and TV boxes.
-unblock_youku.pac_proxy_urls = unblock_youku.chrome_proxy_urls.concat(
-  unblock_youku.header_urls,
-  [
-    "http://a.play.api.3g.youku.com/common/v3/play?*",
-    "http://i.play.api.3g.youku.com/common/v3/play?*",
-    "http://i.play.api.3g.youku.com/common/v3/hasadv/play?*",
-    "http://api.3g.youku.com/layout*",
-    "http://api.3g.youku.com/v3/play/address*",
-    "http://api.3g.youku.com/openapi-wireless/videos/*/download*",
-    "http://api.3g.youku.com/videos/*/download*",
-    "http://api.3g.youku.com/common/v3/play*",
-    "http://tv.api.3g.youku.com/openapi-wireless/v3/play/address*",
-    "http://tv.api.3g.youku.com/common/v3/hasadv/play*",
-    "http://tv.api.3g.youku.com/common/v3/play*",
-    "http://play.api.3g.youku.com/common/v3/hasadv/play*",
-    "http://play.api.3g.youku.com/common/v3/play*",
-    "http://play.api.3g.youku.com/v3/play/address*",
-    "http://i-play.mobile.youku.com/*",
-    "http://play.api.3g.tudou.com/v*",
-    "http://tv.api.3g.tudou.com/tv/play?*",
-    "http://api.3g.tudou.com/*",
-    "http://api.tv.sohu.com/mobile_user/device/clientconf.json?*",
-    "http://access.tv.sohu.com/*",
-    "http://iface.iqiyi.com/api/searchIface?*",
-    "http://iface.iqiyi.com/api/ip2area?*",
-    "http://iface2.iqiyi.com/php/xyz/iface/*",
-    "http://iface2.iqiyi.com/php/xyz/entry/galaxy.php?*",
-    "http://iface2.iqiyi.com/php/xyz/entry/nebula.php?*",
-    "http://cache.m.iqiyi.com/jp/tmts/*",
-    "http://dynamic.app.m.letv.com/*/dynamic.php?*ctl=videofile*",
-    "http://dynamic.meizi.app.m.letv.com/*/dynamic.php?*ctl=videofile*",
-    "http://dynamic.search.app.m.letv.com/*/dynamic.php?*ctl=videofile*",
-    "http://dynamic.live.app.m.letv.com/*/dynamic.php?*act=canplay*",
-    "http://listso.m.areainfo.ppstream.com/ip/q.php*",
-    "http://epg.api.pptv.com/detail.api?*",
-    "http://play.api.pptv.com/boxplay.api?*",
-    "http://api.letv.com/getipgeo",
-    "http://m.letv.com/api/geturl?*",
-    "http://api.mob.app.letv.com/play*",
-    "http://static.api.sports.letv.com/*vod?*",
-    "http://api.itv.letv.com/iptv/api/new/video/play/get.json?*", //for letv TV boxes
-    "http://vdn.apps.cntv.cn/api/getLiveUrlCommonApi.do?pa://cctv_p2p_hdcctv5*",
-    "http://vdn.apps.cntv.cn/api/getLiveUrlCommonApi.do?pa://cctv_p2p_hdcctv6*",
-    "http://vdn.apps.cntv.cn/api/getLiveUrlCommonApi.do?pa://cctv_p2p_hdcctv8*",
-    "http://vdn.apps.cntv.cn/api/getLiveUrlCommonApi.do?pa://cctv_p2p_hdbtv6*",
-    // 'http://vdn.live.cntv.cn/api2/live.do?channel=pa://cctv_p2p_hdcctv5*',
-    // 'http://vdn.live.cntv.cn/api2/live.do?channel=pa://cctv_p2p_hdcctv6*',
-    // 'http://vdn.live.cntv.cn/api2/live.do?channel=pa://cctv_p2p_hdcctv8*',
-    // 'http://vdn.live.cntv.cn/api2/live.do?channel=pa://cctv_p2p_hdbtv6*',
-    "http://vdn.live.cntv.cn/*",
-    "http://app.bilibili.com/*",
-    "https://app.bilibili.com/*",
-    "http://bangumi.bilibili.com/api/*",
-
-    // Music apps
-    "http://3g.music.qq.com/*",
-    "http://mqqplayer.3g.qq.com/*",
-    "http://proxy.music.qq.com/*",
-    "http://proxymc.qq.com/*",
-    //Disable follow url because its hijackable.
-    // 'http://*/base/fcgi-bin/getsession*',  //for ios qq music v5.8, issue #536
-    "http://220.249.243.70/base/fcgi-bin/getsession*",
-    "http://117.185.116.152/base/fcgi-bin/getsession*",
-    "http://101.227.139.217/base/fcgi-bin/getsession*",
-    "http://59.37.96.220/base/fcgi-bin/getsession*",
-    "http://140.207.69.99/base/fcgi-bin/getsession*",
-    "http://103.7.31.186/base/fcgi-bin/getsession*",
-    "http://103.7.30.89/base/fcgi-bin/getsession*",
-    "http://182.254.34.151/base/fcgi-bin/getsession*", //temperary solutions for issue #536
-    "http://223.167.82.139/base/fcgi-bin/getsession*",
-    "http://101.227.169.200/base/fcgi-bin/getsession*",
-    "http://182.254.11.174/base/fcgi-bin/getsession*",
-    "http://183.192.192.139/base/fcgi-bin/getsession*",
-    "http://163.177.90.61/base/fcgi-bin/getsession*",
-    "http://14.18.245.250/base/fcgi-bin/getsession*",
-    "http://183.232.126.23/base/fcgi-bin/getsession*",
-    "http://183.232.119.198/base/fcgi-bin/getsession*",
-    "http://182.254.4.234/base/fcgi-bin/getsession*", //another fix for QQ music in #731
-    "http://203.205.151.23/base/fcgi-bin/getsession*",
-    "http://ip2.kugou.com/check/isCn/*",
-    "http://ip.kugou.com/check/iscn*",
-    "http://client.api.ttpod.com/global*",
-    "http://mobi.kuwo.cn/*",
-    "http://nmobi.kuwo.cn/*",
-    "http://mobilefeedback.kugou.com/*",
-    "http://tingapi.ting.baidu.com/v1/restserver/ting?*method=baidu.ting.song*",
-    "http://music.baidu.com/data/music/links?*",
-    "http://serviceinfo.sdk.duomi.com/api/serviceinfo/getserverlist*",
-    "http://music.163.com/api/copyright/restrict/?*",
-    "http://music.163.com/api/batch",
-    "http://www.xiami.com/web/spark*",
-    "http://www.xiami.com/web/*?*xiamitoken=*",
-    "http://spark.api.xiami.com/api?*method=AuthIp*",
-    "http://spark.api.xiami.com/api?*method=Start.init*",
-    "http://spark.api.xiami.com/api?*method=Songs.getTrackDetail*",
-    "http://spark.api.xiami.com/api?*method=Songs.detail*",
-    // for PC Clients only
-    "http://iplocation.geo.qiyi.com/cityjson",
-    "http://sns.video.qq.com/tunnel/fcgi-bin/tunnel*",
-    "http://v5.pc.duomi.com/single-ajaxsingle-isban*",
-
-    // the access control for https are per domain name
-    "https://openapi.youku.com/*", // see issue #118
-    "https://61.135.196.99/*", //n-openapi.youku.com
-    "https://220.181.185.150/*", //zw-openapi.youku.com
-    "https://111.13.127.46/*", //bj-m-openapi.youku.com
-    "https://211.151.50.10/*", //b-openapi.youku.com
-    "https://123.126.99.57/*", //openapi.youku.com
-    "https://123.126.99.39/*", //zw-n-openapi.youku.com
-    "https://220.181.154.137/*", //zw-t-openapi.youku.com
-
-    // for MiBox iCNTV Authentication
-    "http://tms.is.ysten.com:8080/yst-tms/login.action?*",
-    "http://chrome.2345.com/dianhua/mobileApi/check.php",
-    "http://internal.check.duokanbox.com/check.json*",
-    // for 3rd party's DNS for Apple TV (see pull request #78)
-    "http://180.153.225.136/*",
-    "http://118.244.244.124/*",
-    "http://210.129.145.150/*",
-    "http://182.16.230.98/*", // Updated on Jan. 3, for new DNS of apple tv.
-
-    // for NeteaseMusic on iOS
-    "http://103.65.41.126/eapi/*",
-    "http://103.65.41.125/eapi/*"
-  ]
-);
-
-// These URLs will not go through proxy servers (for our PAC service).
-unblock_youku.pac_proxy_bypass_urls = unblock_youku.chrome_proxy_bypass_urls.concat(
-  [
-    // 'http://*/ipad?file=/*'  // Not useful anymore for iOS
-  ]
-);
-
-export default {
-  headerURLs: unblock_youku.header_urls,
-  redirectURLs: unblock_youku.redirect_urls,
-  proxyURLs: unblock_youku.chrome_proxy_urls,
-  proxyBypassURLs: unblock_youku.chrome_proxy_bypass_urls,
-  pacProxyURLs: unblock_youku.pac_proxy_urls,
-  pacProxyBypassURLs: unblock_youku.pac_proxy_bypass_urls
-};
